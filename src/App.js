@@ -1,18 +1,36 @@
 import React, {Component} from 'react';
-import './App.css';
+import Todos from './components/Todos';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {todoLists: [
+      { 
+        title: 'Go jogging',
+        isCompleted: true
+      },
+      { 
+        title: 'Reading book',
+        isCompleted: false
+      },
+      { 
+        title: 'Have breakfast',
+        isCompleted: true
+      },
+      { 
+        title: 'Go to work',
+        isCompleted: false
+      },
+    ]};
+  }
   render() {
-    const helloWorld = 'Welcome to the Road to learn React';
-    let myInfo = {
-      name: "Severus",
-      job: "Librarian"
-    }
     return (
-      <div className="App">
-      <h2>{helloWorld}</h2>
-        <h2>My name is {myInfo.name}</h2>
-        <h2>My current job is {myInfo.job}</h2>
+      <div className="container">
+        {
+          this.state.todoLists.map((item, index) => (
+            <Todos key={ index } item={ item }></Todos>)
+          )
+        }
       </div>
     )
   }
