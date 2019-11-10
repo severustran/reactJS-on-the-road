@@ -23,13 +23,18 @@ class App extends Component {
       },
     ]};
   }
+  //truthy && value => value
+  //falsy && value => false
   render() {
     return (
       <div className="container">
         {
-          this.state.todoLists.map((item, index) => (
+          this.state.todoLists.length > 0 && this.state.todoLists.map((item, index) => (
             <Todos key={ index } item={ item }></Todos>)
           )
+        }
+        {
+          this.state.todoLists.length === 0 && 'Nothing show up here'
         }
       </div>
     )
