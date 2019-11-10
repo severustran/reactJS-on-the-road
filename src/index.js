@@ -6,10 +6,14 @@ import Clock from './Clock'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-function stick() { 
-    ReactDOM.render(<Clock />, document.getElementById('clock'));
-}
-setInterval(stick, 1000);
+//First way - should not use
+// function stick() { 
+//     ReactDOM.render(<Clock />, document.getElementById('clock'));
+// }
+// setInterval(stick, 1000);
+
+//Second way - render() function automatically called with setInterval
+ReactDOM.render(<Clock />, document.getElementById('clock'));
 
 if (module.hot) {
     module.hot.accept();
