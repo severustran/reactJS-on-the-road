@@ -3,6 +3,9 @@
     font-weight: 300;
     font-size: 24px;
     color: #4d4d4d;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .TodoItem-complete {

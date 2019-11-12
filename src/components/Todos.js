@@ -3,7 +3,7 @@ import './Todos.css';
 
 class Todos extends Component {
     render() {
-        let item = this.props.item;
+        let { item, onClick } = this.props;
         
         
         //First way
@@ -18,7 +18,7 @@ class Todos extends Component {
             'TodoItem': true, 'TodoItem-complete': item.isCompleted
         });
         return (
-            <div className={ className }>
+            <div className={ className } onClick={ onClick }>
                 <p> { item.title } </p>
             </div>
         )

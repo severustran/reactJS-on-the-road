@@ -23,6 +23,15 @@ class App extends Component {
       },
     ]};
   }
+
+  onItemClicked(item) {
+    return (event) => {
+      this.setState({
+        todoLists: this.state.todoLists.map( i => i!==item ? {...i} : {...i, isCompleted: !item.isCompleted})
+      });
+    }
+  }
+
   //truthy && value => value
   //falsy && value => false
   render() {
@@ -30,7 +39,11 @@ class App extends Component {
       <div className="container">
         {
           this.state.todoLists.length > 0 && this.state.todoLists.map((item, index) => (
-            <Todos key={ index } item={ item }></Todos>)
+            <Todos 
+              key={ index } 
+              item={ item } 
+              onClick={ this.onItemClicked(item) }></Todos>
+            )
           )
         }
         {
