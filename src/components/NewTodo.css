@@ -1,0 +1,39 @@
+.input-group {
+    display: flex;
+    margin-bottom: 1px;
+    flex-direction: row;
+}
+
+.input-txt {
+    flex: auto;
+    position: relative;
+    box-sizing: border-box;
+    background: #badfdb;
+    border-radius: 10px;
+    margin-right: 1px;
+}
+
+.input-group .input-txt > input {
+    outline: none;
+    background: #badfdb;
+    border: none;
+    height: 50px;
+    font-size: 17px;
+    margin-left: 15px;
+    color: #626979;
+}
+
+.input-group > button {
+    border: none;
+    height: auto;
+    width: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 200ms all;
+    outline: none;
+    background: #9be3de;
+}
+
+.input-group > button:hover {
+    background: #ffe3ed;
+}

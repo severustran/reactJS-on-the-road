@@ -17,7 +17,7 @@ class Todos extends Component {
             'TodoItem': true, 'TodoItem-complete': item.isCompleted
         });
 
-        let box = (item.isCompleted) ? 'fa-square' : 'fa-check-square'
+        let box = (item.isCompleted) ? 'fa-check-square' : 'fa-square'
 
         return (
             <div className={ className } >

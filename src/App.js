@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Todos from './components/Todos';
+import NewTodo from './components/NewTodo';
+import './components/Todos.css';
 
 class App extends Component {
   constructor(){
@@ -38,6 +40,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <NewTodo />
         {
           this.state.todoLists.length > 0 && this.state.todoLists.map((item, index) => (
             <Todos 
