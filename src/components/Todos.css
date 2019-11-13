@@ -1,14 +1,42 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css");
+
 .TodoItem {
-    font-family: Helvetica, Arial, sans-serif;
+    /* font-family: Helvetica, Arial, sans-serif;
     font-weight: 300;
     font-size: 24px;
     color: #4d4d4d;
     margin: 0;
     padding: 0;
+    box-sizing: border-box; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: auto;
+    background: #1b2a49;
+    border-radius: 10px;
+    color: #c5cbda;
     box-sizing: border-box;
+    padding: 2px;
+    margin: 1px;
+    font-family: "fontAwesome";
+    position: relative;
 }
 
-.TodoItem-complete {
+.TodoItem > span {
+    width: 40px;
+}
+
+.TodoItem > span i {
+    margin-left: 13px;
+}
+
+.TodoItem p {
+    flex: auto;
+    user-select: none;
+}
+
+.TodoItem-complete > p {
     text-decoration: line-through;
     opacity: .3;
 }

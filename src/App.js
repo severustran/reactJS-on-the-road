@@ -29,6 +29,7 @@ class App extends Component {
       this.setState({
         todoLists: this.state.todoLists.map( i => i!==item ? {...i} : {...i, isCompleted: !item.isCompleted})
       });
+
     }
   }
 

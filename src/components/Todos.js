@@ -5,7 +5,6 @@ class Todos extends Component {
     render() {
         let { item, onClick } = this.props;
         
-        
         //First way
         // let className = 'TodoItem';
         // if(item.isCompleted) {
@@ -17,8 +16,12 @@ class Todos extends Component {
         let className = classNames({
             'TodoItem': true, 'TodoItem-complete': item.isCompleted
         });
+
+        let box = (item.isCompleted) ? 'fa-square' : 'fa-check-square'
+
         return (
-            <div className={ className } onClick={ onClick }>
+            <div className={ className } >
+                <span onClick={ onClick }><i className={ classNames('far', box) }></i></span>
                 <p> { item.title } </p>
             </div>
         )
