@@ -35,7 +35,7 @@ class App extends Component {
     }
   }
 
-  //truthy && value => value
+   //truthy && value => value
   //falsy && value => false
   render() {
     return (

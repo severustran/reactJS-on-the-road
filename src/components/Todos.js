@@ -4,7 +4,6 @@ import './Todos.css';
 class Todos extends Component {
     render() {
         let { item, onClick } = this.props;
-        
         //First way
         // let className = 'TodoItem';
         // if(item.isCompleted) {
