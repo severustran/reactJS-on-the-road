@@ -22,8 +22,10 @@ class App extends Component {
         title: 'Hello Orla!',
         isCompleted: false
       },
-    ]};
+    ], input: ""};
     this.txtInput = React.createRef();
+    this.handleChange = this.handleChange.bind(this);
+    this.onKeyPress = this.onKeyPress.bind(this);
   }
 
   onItemClicked(item) {
@@ -46,6 +48,10 @@ class App extends Component {
     }
   }
 
+  handleChange() {
+
+  }
+
    //truthy && value => value
   //falsy && value => false
   render() {
@@ -54,7 +60,13 @@ class App extends Component {
       <div className="container">
         <div className="input-group">
           <div className="input-txt">
-              <input type="text" placeholder="Enter your todo" ref={this.txtInput} ></input>
+              <input type="text" 
+                placeholder="Enter your todo" 
+                ref={ this.txtInput }
+                value={ this.state.value }
+                onChange= { this.handleChange } 
+                onKeyPress= { this.keyPress }>              
+                </input>
           </div>
           <button onClick={ this.addTodo.bind(this, this.addTodo) }>Add</button>
         </div>
