@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Todos from './components/Todos';
-import NewTodo from './components/NewTodo';
 import './components/Todos.css';
 
 class App extends Component {
@@ -20,10 +19,11 @@ class App extends Component {
         isCompleted: true
       },
       { 
-        title: 'Go to work',
+        title: 'Hello Orla!',
         isCompleted: false
       },
     ]};
+    this.txtInput = React.createRef();
   }
 
   onItemClicked(item) {
@@ -35,12 +35,29 @@ class App extends Component {
     }
   }
 
+  addTodo(){
+    if( this.txtInput.current.value !== "" ) {
+      console.log(this.txtInput.current.value);
+      this.state.todoLists.push({title: this.txtInput.current.value, isCompleted: false});
+      this.setState(this.state);
+      this.txtInput.current.value = "";
+    } else {
+      alert("You forget to enter todos");
+    }
+  }
+
    //truthy && value => value
   //falsy && value => false
   render() {
+    // console.log(this.state.todoLists);
     return (
       <div className="container">
-        <NewTodo />
+        <div className="input-group">
+          <div className="input-txt">
+              <input type="text" placeholder="Enter your todo" ref={this.txtInput} ></input>
+          </div>
+          <button onClick={ this.addTodo.bind(this, this.addTodo) }>Add</button>
+        </div>
         {
           this.state.todoLists.length > 0 && this.state.todoLists.map((item, index) => (
             <Todos 
