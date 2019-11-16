@@ -3,8 +3,8 @@ import Todos from './components/Todos';
 import './components/Todos.css';
 
 class App extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {todoLists: [
       { 
         title: 'Go jogging',
@@ -39,27 +39,40 @@ class App extends Component {
   }
 
   //First way: Use ref to add new todo
-  addTodo(e){
-    if( this.txtInput.current.value !== "" ) {
-      console.log(this.txtInput.current.value);
-      this.state.todoLists.push({title: this.txtInput.current.value, isCompleted: false});
-      this.setState(this.state);
-      this.txtInput.current.value = "";
+  // addTodo(e){
+  //   if( this.txtInput.current.value !== "" ) {
+  //     console.log(this.txtInput.current.value);
+  //     this.state.todoLists.push({title: this.txtInput.current.value, isCompleted: false});
+  //     this.setState(this.state);
+  //     this.txtInput.current.value = "";
+  //   } else {
+  //     alert("You forget to enter todos");
+  //   }
+  // }
+
+  //Second way: Use React design concept
+  addTodo(event){
+    if( this.state.input !== "" ) {
+      console.log(this.state.input);
+      this.setState({ 
+        todoLists: [ ...this.state.todoLists, {title: this.state.input, isCompleted: false} ]
+      });
+      this.setState({ input: "" });
     } else {
       alert("You forget to enter todos");
     }
   }
 
-  //Second way: Use React design concept
-  handleChange() {
-
+  handleChange(event) {
+    this.setState({
+      input: event.target.value
+    });
+    // console.log(this.state.input);
   }
 
   keyPress(event) {
     if(event.key === "Enter") {
       this.addTodo();
-    } else {
-      console.log(event.key);
     }
   }
 
@@ -74,7 +87,7 @@ class App extends Component {
               <input type="text" 
                 placeholder="Enter your todo" 
                 ref={ this.txtInput }
-                value={ this.state.value }
+                value={ this.state.input }
                 onChange= { this.handleChange } 
                 onKeyPress= { this.keyPress }>              
                 </input>
