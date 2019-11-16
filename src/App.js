@@ -25,7 +25,8 @@ class App extends Component {
     ], input: ""};
     this.txtInput = React.createRef();
     this.handleChange = this.handleChange.bind(this);
-    this.onKeyPress = this.onKeyPress.bind(this);
+    this.keyPress = this.keyPress.bind(this);
+    this.addTodo = this.addTodo.bind(this);
   }
 
   onItemClicked(item) {
@@ -37,7 +38,8 @@ class App extends Component {
     }
   }
 
-  addTodo(){
+  //First way: Use ref to add new todo
+  addTodo(e){
     if( this.txtInput.current.value !== "" ) {
       console.log(this.txtInput.current.value);
       this.state.todoLists.push({title: this.txtInput.current.value, isCompleted: false});
@@ -48,8 +50,17 @@ class App extends Component {
     }
   }
 
+  //Second way: Use React design concept
   handleChange() {
 
+  }
+
+  keyPress(event) {
+    if(event.key === "Enter") {
+      this.addTodo();
+    } else {
+      console.log(event.key);
+    }
   }
 
    //truthy && value => value
@@ -68,7 +79,7 @@ class App extends Component {
                 onKeyPress= { this.keyPress }>              
                 </input>
           </div>
-          <button onClick={ this.addTodo.bind(this, this.addTodo) }>Add</button>
+          <button onClick={ this.addTodo }>Add</button>
         </div>
         {
           this.state.todoLists.length > 0 && this.state.todoLists.map((item, index) => (
