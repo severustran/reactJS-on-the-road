@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Todos from './components/Todos';
 import './components/Todos.css';
+import TodoFilter from './components/TodoFilter';
 
 class App extends Component {
   constructor(props){
@@ -84,6 +85,7 @@ class App extends Component {
       <div className="container">
         <div className="input-group">
           <div className="input-txt">
+              <span><i className="fas fa-check"></i></span>
               <input type="text" 
                 placeholder="Enter your todo" 
                 ref={ this.txtInput }
@@ -106,6 +108,7 @@ class App extends Component {
         {
           this.state.todoLists.length === 0 && 'Nothing show up here'
         }
+        <TodoFilter />
       </div>
     )
   }
